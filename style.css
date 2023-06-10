@@ -1,0 +1,160 @@
+/* styles.css */
+
+/* Thiết kế cho đầu vào datetime-local */
+input[type="datetime-local"] {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Thiết kế cho nhãn */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  /* Font cho input */
+  input {
+    font-family: Arial, sans-serif; /* Thay đổi font chữ */
+    font-size: 16px; /* Thay đổi font size */
+  }
+  
+  /* Thiết kế cho nút "Next" */
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* ... */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  h1, h2, h3 {
+    color: #333333;
+  }
+  
+  form {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  #studentSurveyForm {
+    background: #b4b4b4;
+    border-radius: 20px;
+  }
+  /* Phần form feedback học sinh */
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 3px solid #cccccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .survey-container {
+    margin-top: 20px;
+  }
+  
+  .student-div {
+    margin-bottom: 20px;
+    border: 1px solid #383838;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .student-div h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .student-div label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .student-div textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .student-div br {
+    clear: both;
+  }
+  
+  .done-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .done-button button {
+    background-color: #4CAF50;
+    color: #ffffff;
+  }
+  
+  .done-button button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Thêm viền cho khung học sinh */
+  .student-div {
+    margin-bottom: 20px;
+    border: 5px solid #4e4e4e;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .student-div.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    
+  }
+  

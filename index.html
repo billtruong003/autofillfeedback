@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Khảo sát học sinh</title>
+  <link rel="stylesheet" href="style.css">
+  <script src = "main.js"></script>
+</head>
+<body>
+  <h1 style = "font-size: 50px; text-align:center;">Feedback Form ICT Teacher</h1>
+  
+  <form id="surveyForm" onsubmit="return false;">
+    <label for="date">Ngày tháng giờ giấc:</label>
+    <input type="datetime-local" id="date" required><br>
+
+    <label for="class">Lớp học:</label>
+    <input type="text" id="class" required><br>
+
+    <label for="teacher">Tên giáo viên:</label>
+    <input type="text" id="teacher" required><br>
+
+    <label for="studentCount">Số lượng học sinh:</label>
+    <input type="number" id="studentCount" min="1" required><br>
+    
+    <button onclick="validateInputs()">Next</button>
+  </form>
+
+  <div id="surveyContainer" class="hidden">
+    <h2>Khảo sát học sinh</h2>
+    <form id="studentSurveyForm" onsubmit="return false;"></form>
+  </div>
+  
+</body>
+</html>
