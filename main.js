@@ -1,32 +1,31 @@
 function validateInputs() {
-    // Lấy giá trị từ các trường input
     var dateValue = document.getElementById("date").value;
     var classValue = document.getElementById("class").value;
     var teacherValue = document.getElementById("teacher").value;
     var studentCountValue = document.getElementById("studentCount").value;
   
-    // Kiểm tra xem tất cả các trường input đã được điền đầy đủ hay chưa
     if (dateValue && classValue && teacherValue && studentCountValue) {
-      showSurvey(); // Nếu điền đầy đủ, hiển thị khảo sát
+      showSurvey();
     } else {
-      alert("Vui lòng điền đầy đủ thông tin về lớp khi tiếp tục đánh giá!"); // Hiển thị thông báo lỗi
+      alert("Vui lòng điền đầy đủ thông tin về lớp khi tiếp tục đánh giá!");
     }
-  }  
-function showSurvey() {
+  }
+  
+  function showSurvey() {
     var studentCount = document.getElementById("studentCount").value;
     var surveyContainer = document.getElementById("surveyContainer");
     var studentSurveyForm = document.getElementById("studentSurveyForm");
-    studentSurveyForm.innerHTML = ""; // Clear previous survey form
+    studentSurveyForm.innerHTML = "";
   
     for (var i = 1; i <= studentCount; i++) {
       var studentDiv = document.createElement("div");
       studentDiv.className = "student-div";
       studentDiv.innerHTML = "<h3>Học sinh " + i + "</h3>";
-
+  
       var studentNameLabel = document.createElement("label");
       studentNameLabel.textContent = "Tên học sinh:";
       var studentName = document.createElement("input");
-      studentName.id = "studentName";
+      studentName.id = "studentName" + i;
       studentName.type = "text";
       studentName.name = "student" + i + "-name";
       studentName.placeholder = "Nhập tên học sinh";
@@ -40,7 +39,7 @@ function showSurvey() {
   
       var skill1Label = document.createElement("label");
       var skill1 = document.createElement("input");
-      skill1.id = "analysisSkill";
+      skill1.id = "analysisSkill" + i;
       skill1.type = "checkbox";
       skill1.name = "student" + i + "-skill1";
       skill1.value = "Đạt";
@@ -51,7 +50,7 @@ function showSurvey() {
   
       var skill2Label = document.createElement("label");
       var skill2 = document.createElement("input");
-      skill2.id = "commandSkill";
+      skill2.id = "commandSkill" + i;
       skill2.type = "checkbox";
       skill2.name = "student" + i + "-skill2";
       skill2.value = "Đạt";
@@ -62,7 +61,7 @@ function showSurvey() {
   
       var skill3Label = document.createElement("label");
       var skill3 = document.createElement("input");
-      skill3.id = "debugSkill";
+      skill3.id = "debugSkill" + i;
       skill3.type = "checkbox";
       skill3.name = "student" + i + "-skill3";
       skill3.value = "Đạt";
@@ -76,7 +75,7 @@ function showSurvey() {
       studentDiv.appendChild(commentHeader);
   
       var comment = document.createElement("textarea");
-      comment.id = "personalComment"
+      comment.id = "personalComment" + i;
       comment.name = "student" + i + "-comment";
       comment.placeholder = "Nhập nhận xét";
       studentDiv.appendChild(document.createElement("br"));
@@ -85,13 +84,12 @@ function showSurvey() {
       studentSurveyForm.appendChild(studentDiv);
     }
   
-    // Thêm nút "Done"
     var doneButtonDiv = document.createElement("div");
     doneButtonDiv.className = "done-button";
     var doneButton = document.createElement("button");
     doneButton.textContent = "Done";
     doneButton.type = "submit";
-    doneButton.addEventListener("click", submitSurvey); // Thêm sự kiện click cho nút "Done"
+    doneButton.addEventListener("click", submitSurvey);
     doneButtonDiv.appendChild(doneButton);
     studentSurveyForm.appendChild(doneButtonDiv);
   
@@ -99,36 +97,49 @@ function showSurvey() {
   }
   
   function submitSurvey() {
-    const dateValue = document.getElementById("date").value;
-    const classValue = document.getElementById("class").value;
-    const studentName = document.getElementById("studentName").value;
-    const teacherValue = document.getElementById("teacher").value;
-    const analysisSkillValue = document.getElementById("analysisSkill").value;
-    const commandSkillValue = document.getElementById("commandSkill").value;
-    const debugSkillValue = document.getElementById("debugSkill").value;
-    const personalCommentValue = document.getElementById("personalComment").value;
-    const timestamp = new Date()
-
-    const formData = {
-      timestamp: timestamp,
+    var dateValue = document.getElementById("date").value;
+    var classValue = document.getElementById("class").value;
+    var teacherValue = document.getElementById("teacher").value;
+  
+    var formData = {
+      timestamp: new Date(),
       teacher: teacherValue,
       class: classValue,
-      studentName: studentName,
-      date: dateValue,
-      analysisSkill: analysisSkillValue,
-      commandSkill: commandSkillValue,
-      debugSkill: debugSkillValue,
-      personalComment: personalCommentValue
+      students: []
     };
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzKS4CQ51bmDuDdQ9MiiZ7K8j_auDulEnblf9_0-7l8XjbnjYSIIeleiRhVXBs5a9HA/exec'
-    const form = document.forms['surveyForm']
-
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
+  
+    var studentCount = document.getElementById("studentCount").value;
+    for (var i = 1; i <= studentCount; i++) {
+      var studentName = document.getElementById("studentName" + i).value;
+      var analysisSkill = document.getElementById("analysisSkill" + i).checked;
+      var commandSkill = document.getElementById("commandSkill" + i).checked;
+      var debugSkill = document.getElementById("debugSkill" + i).checked;
+      var personalComment = document.getElementById("personalComment" + i).value;
+  
+      var studentData = {
+        name: studentName,
+        analysisSkill: analysisSkill,
+        commandSkill: commandSkill,
+        debugSkill: debugSkill,
+        personalComment: personalComment
+      };
+  
+      formData.students.push(studentData);
+    }
+  
+    console.log(formData);
+    // Gửi dữ liệu khảo sát đi ở đây...
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzRouLk8Krysrez5iWUH-U-5TNpuUvcQf9TShUND2J9-aiqRMKT9-R465_pQ_hh1YdI/exec";
+  
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode: "no-cors" // Thêm chế độ 'no-cors' vào yêu cầu fetch
+    })
+      .then(response => console.log("Success!", response))
+      .catch(error => console.error("Error!", error.message));
   }
   
