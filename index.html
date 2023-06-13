@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Khảo sát học sinh</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body>
-    <h1 style = "font-size: 50px; text-align:center;">Feedback Form ICT Teacher</h1>
-    
+
+<head>
+    <title>Khảo sát học sinh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1 style="font-size: 50px; text-align:center;">Feedback Form ICT Teacher</h1>
+
     <form id="surveyForm" onsubmit="return false;">
         <label for="date">Ngày tháng giờ giấc:</label>
         <input type="datetime-local" id="date" required><br>
 
         <label for="class">Lớp học:</label>
-        <input type="text" id="class" required><br>
+        <select id="_className" required>
+            <option value="Python">Python</option>
+            <option value="PTS">PTS</option>
+            <option value="BE (Scratch JR, Maker Empire)">BE (Scratch JR, Maker Empire)</option>
+            <option value="Robotic">Robotic</option>
+          </select>
 
         <label for="teacher">Tên giáo viên:</label>
         <input type="text" id="teacher" required><br>
 
         <label for="studentCount">Số lượng học sinh:</label>
         <input type="number" id="studentCount" min="1" required><br>
-        
+
         <button onclick="validateInputs()">Next</button>
     </form>
 
@@ -29,6 +36,7 @@
         <h2>Khảo sát học sinh</h2>
         <form id="studentSurveyForm" onsubmit="return false;"></form>
     </div>
-    <script src = "main.js"></script>
-    </body>
+    <script src="main.js"></script>
+</body>
+
 </html>

@@ -1,7 +1,7 @@
 /* styles.css */
 
 /* Thiết kế cho đầu vào datetime-local */
-input[type="datetime-local"] {
+input[type="datetime-local"], select{
     padding: 8px;
     border: 1px solid #cccccc;
     border-radius: 4px;
@@ -19,7 +19,7 @@ input[type="datetime-local"] {
   }
   
   /* Font cho input */
-  input {
+  input, select{
     font-family: Arial, sans-serif; /* Thay đổi font chữ */
     font-size: 16px; /* Thay đổi font size */
   }
@@ -70,11 +70,11 @@ input[type="datetime-local"] {
   input[type="text"],
   input[type="number"],
   textarea {
-    width: 100%;
-    padding: 8px;
-    border: 3px solid #cccccc;
+    padding: 10px;
+    border: 1px solid #cccccc;
     border-radius: 10px;
     box-sizing: border-box;
+    width: 100%;
     margin-bottom: 10px;
   }
   
